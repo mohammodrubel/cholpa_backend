@@ -1,0 +1,136 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+////////////////////
+/// ENUMS
+////////////////////
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum BannerStatus {
+  active
+  inactive
+}
+
+////////////////////
+/// USER MODELS
+////////////////////
+
+model User {
+  id            String  @id @default(uuid())
+  email         String  @unique
+  fullName      String
+  password      String
+  role          Role    @default(USER)
+  isBlocked     Boolean @default(false)
+  emailVerified Boolean @default(false)
+  isActive      Boolean @default(true)
+}
+
+model Banner {
+  id String @id @default(uuid())
+
+  imageUrl String
+  status   BannerStatus @default(active)
+
+  // EN
+  shortTitle_en  String?
+  title_en       String
+  description_en String  @db.Text
+  minutes_en     String?
+  award_en       String?
+  rating_en      String?
+  buttonText_en  String?
+
+  // AZ
+  shortTitle_az  String?
+  title_az       String
+  description_az String  @db.Text
+  minutes_az     String?
+  award_az       String?
+  rating_az      String?
+  buttonText_az  String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Recipe {
+  id String @id @default(uuid())
+
+  name_en String
+  name_az String
+
+  description_en String @db.Text
+  description_az String @db.Text
+
+  details_en String @db.Text
+  details_az String @db.Text
+
+  category_en String?
+  category_az String?
+
+  minute Int?
+
+  chefName_en String?
+  chefName_az String?
+
+  imageUrl String?
+
+  videoTitle_en String?
+  videoTitle_az String?
+
+  videoDescription_en String? @db.Text
+  videoDescription_az String? @db.Text
+
+  videoUrl String?
+
+  ingredients Ingredient[]
+  tips        Tip[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Ingredient {
+  id String @id @default(uuid())
+
+  value_en String
+  value_az String
+
+  recipeId String
+  recipe   Recipe @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+}
+
+model Tip {
+  id String @id @default(uuid())
+
+  value_en String
+  value_az String
+
+  recipeId String
+  recipe   Recipe @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+}
+
+model advertisement {
+  id String @id @default(uuid())
+  shortTitle_az String
+  shortTitle_en String
+  title_az String
+  title_en String
+  image String
+}
