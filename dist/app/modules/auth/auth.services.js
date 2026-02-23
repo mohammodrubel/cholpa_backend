@@ -48,7 +48,7 @@ const Register = (payload) => __awaiter(void 0, void 0, void 0, function* () {
     const hashedPassword = yield bcrypt_1.default.hash(payload.password, Number(config_1.default.bcrypt_salt_rounds));
     const user = yield prisma_1.default.user.create({
         data: {
-            full_name: payload.full_name,
+            fullName: payload.fullName,
             email: payload.email,
             password: hashedPassword,
             role: payload.role,

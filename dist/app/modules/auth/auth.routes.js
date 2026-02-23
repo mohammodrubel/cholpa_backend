@@ -10,6 +10,7 @@ const auth_validation_1 = __importDefault(require("./auth.validation"));
 const auth_controller_1 = __importDefault(require("./auth.controller"));
 const router = express_1.default.Router();
 router.post('/login', (0, validateRequest_1.default)(auth_validation_1.default.LoginSchema), auth_controller_1.default.Login);
+//demo
 router.post('/register', (0, validateRequest_1.default)(auth_validation_1.default.RegisterSchema), auth_controller_1.default.Register);
 router.patch('/change-password', (0, validateRequest_1.default)(auth_validation_1.default.ChangePasswordSchema), auth_controller_1.default.ChangePassword);
 exports.AuthRoutes = router;

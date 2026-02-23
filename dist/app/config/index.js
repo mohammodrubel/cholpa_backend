@@ -17,8 +17,8 @@ exports.default = {
     stripe_secret_key: process.env.STRIPE_SECRET_KEY,
     stripe_publish_key: process.env.PUBLISH_KEY,
     cloudinary: {
-        cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-        api_key: process.env.CLOUDINARY_API_KEY,
-        api_secret: process.env.CLOUDINARY_API_SECRET,
+        cloud_name: process.env.CLOUD_NAME,
+        api_key: process.env.API_KEY,
+        api_secret: process.env.API_SECRET,
     },
 };

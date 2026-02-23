@@ -15,23 +15,23 @@ const GetAllUsers = catchAsync(async (_req: Request, res: Response) => {
 });
 
 const GetSingleUser = catchAsync(async (req: Request, res: Response) => {
-  const id = req.params?.id;
-  const result = await UserService.GetSingleUser(id);
-  sendResponse(res, {
-    success: true,
-    statusCode: httpStatus.OK,
-    message: 'User retrieve successful',
-    data: result,
-  });
+  // const id = req.params?.id;
+  // const result = await UserService.GetSingleUser(id);
+  // sendResponse(res, {
+  //   success: true,
+  //   statusCode: httpStatus.OK,
+  //   message: 'User retrieve successful',
+  //   data: result,
+  // });
 });
 
 const DeleteUser = catchAsync(async (req: Request, res: Response) => {
-  const id = req.params?.id;
-  await UserService.DeleteUser(id);
-  sendResponse(res, {
-    success: true,
-    statusCode: httpStatus.NO_CONTENT,
-  });
+  // const id = req.params?.id;
+  // await UserService.DeleteUser(id);
+  // sendResponse(res, {
+  //   success: true,
+  //   statusCode: httpStatus.NO_CONTENT,
+  // });
 });
 
 export const UserController = {

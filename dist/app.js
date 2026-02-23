@@ -11,6 +11,7 @@ const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const notFound_1 = __importDefault(require("./app/middlewares/notFound"));
 const routes_1 = __importDefault(require("./app/routes"));
 const globalErrorHandler_1 = __importDefault(require("./app/middlewares/globalErrorHandler"));
+const seedAdmin_1 = require("./app/middlewares/seedAdmin");
 const app = (0, express_1.default)();
 app.use((0, morgan_1.default)('dev'));
 app.use(express_1.default.json({ limit: '50mb' }));
@@ -18,11 +19,13 @@ app.use(express_1.default.urlencoded({ extended: true, limit: '50mb' }));
 app.use(body_parser_1.default.urlencoded({ extended: true, limit: '50mb' }));
 app.use((0, cookie_parser_1.default)());
 app.use((0, cors_1.default)({
-    origin: ['http://localhost:3000'],
+    origin: ['http://localhost:5173'],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     allowedHeaders: 'Content-Type, Authorization, Origin, X-Requested-With, Accept',
     credentials: true,
 }));
+// sheeds 
+(0, seedAdmin_1.seedAdmin)();
 // application routes
 app.use('/api', routes_1.default);
 //global error handler

@@ -25,9 +25,9 @@ const getAllAdvertisements = catchAsync(async (req, res) => {
 });
 
 const updateAdvertisement = catchAsync(async (req, res) => {
-  const { id } = req.params;
+  const id = req.params.id;
   const file = req.file as Express.Multer.File | undefined;
-  const result = await advertisementService.updateAdvertisement(id, file, req.body);
+  const result = await advertisementService.updateAdvertisement(id as string, file, req.body);
   sendResponse(res, {
     success: true,
     statusCode: httpStatus.OK,
@@ -38,7 +38,7 @@ const updateAdvertisement = catchAsync(async (req, res) => {
 
 const deleteAdvertisement = catchAsync(async (req, res) => {
   const { id } = req.params;
-  const result = await advertisementService.deleteAdvertisement(id);
+  const result = await advertisementService.deleteAdvertisement(id as string);
   sendResponse(res, {
     success: true,
     statusCode: httpStatus.OK,

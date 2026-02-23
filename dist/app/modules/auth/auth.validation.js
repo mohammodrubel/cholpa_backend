@@ -17,7 +17,7 @@ const LoginSchema = zod_1.z.object({
 });
 const RegisterSchema = zod_1.z.object({
     body: zod_1.z.object({
-        full_name: zod_1.z
+        fullName: zod_1.z
             .string({
             required_error: 'Full name is required',
             invalid_type_error: 'Full name must be a string',

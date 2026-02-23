@@ -27,24 +27,22 @@ const GetAllUsers = (0, catchAsync_1.default)((_req, res) => __awaiter(void 0, v
     });
 }));
 const GetSingleUser = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    var _a;
-    const id = (_a = req.params) === null || _a === void 0 ? void 0 : _a.id;
-    const result = yield user_service_1.UserService.GetSingleUser(id);
-    (0, sendResponse_1.default)(res, {
-        success: true,
-        statusCode: http_status_1.default.OK,
-        message: 'User retrieve successful',
-        data: result,
-    });
+    // const id = req.params?.id;
+    // const result = await UserService.GetSingleUser(id);
+    // sendResponse(res, {
+    //   success: true,
+    //   statusCode: httpStatus.OK,
+    //   message: 'User retrieve successful',
+    //   data: result,
+    // });
 }));
 const DeleteUser = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    var _a;
-    const id = (_a = req.params) === null || _a === void 0 ? void 0 : _a.id;
-    yield user_service_1.UserService.DeleteUser(id);
-    (0, sendResponse_1.default)(res, {
-        success: true,
-        statusCode: http_status_1.default.NO_CONTENT,
-    });
+    // const id = req.params?.id;
+    // await UserService.DeleteUser(id);
+    // sendResponse(res, {
+    //   success: true,
+    //   statusCode: httpStatus.NO_CONTENT,
+    // });
 }));
 exports.UserController = {
     GetAllUsers,

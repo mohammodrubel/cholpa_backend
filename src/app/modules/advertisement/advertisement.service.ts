@@ -53,7 +53,7 @@ const updateAdvertisement = async (
 ) => {
   // Check if advertisement exists
   const existing = await prisma.advertisement.findUnique({
-    where: { id },
+    where: { id:id },
   });
   if (!existing) {
     throw new AppError(httpStatus.NOT_FOUND, 'Advertisement not found');

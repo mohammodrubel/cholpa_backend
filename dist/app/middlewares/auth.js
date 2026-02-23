@@ -31,7 +31,7 @@ const auth = (...roles) => {
         const decoded = jsonwebtoken_1.default.verify(token, config_1.default.jwt_access_token_secret);
         const { email } = decoded;
         const user = yield prisma_1.default.user.findUnique({
-            where: { email, is_deleted: false },
+            where: { email },
         });
         if (!user) {
             throw new AppError_1.default(http_status_1.default.UNAUTHORIZED, "You're not authorized to access this route");
