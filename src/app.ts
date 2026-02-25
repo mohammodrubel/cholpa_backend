@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
 app.use(cookieParser());
 app.use(
   cors({
-    origin: ['http://localhost:5173','https://cholpa-frontend.vercel.app/'],
+    origin: ['http://localhost:5173','https://cholpa-frontend.vercel.app/','https://www.cholpa.az/'],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     allowedHeaders:
       'Content-Type, Authorization, Origin, X-Requested-With, Accept',
